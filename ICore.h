@@ -7,10 +7,18 @@
 #include <system_error>
 
 #include <CryptoNote.h>
-#include "core/Difficulty.h"
 
+#include "blockchain/AddBlockErrors.h"
+#include "blockchain/AddBlockErrorCondition.h"
+#include "BlockchainExplorerData.h"
+#include "blockchain/BlockchainMessages.h"
+//#include "blockchain/CachedBlock.h". blockchain.cpp split here
+//#include "blockchain/CachedTransaction.h" transaction will split here
+//#include "core/CoreStatistics.h"
 #include "core/MessageQueue.h"
-#include "core/block/BlockchainMessages.h"
+#include "core/Difficulty.h"
+#include "ICoreObserver.h"
+//#include "ICoreDefinitions.h". chain split from CryptoNoteProtocolDefinitions
 
 namespace CryptoNote {
 
@@ -99,8 +107,8 @@ public:
   virtual bool handleIncomingTransaction(const Transaction& tx, const Crypto::Hash& txHash, size_t blobSize, tx_verification_context& tvc, bool keptByBlock, uint32_t height) = 0;
   virtual std::error_code executeLocked(const std::function<std::error_code()>& func) = 0;
 
-  virtual bool addMessageQueue(MessageQueue<BlockchainMessage>& messageQueue) = 0;
-  virtual bool removeMessageQueue(MessageQueue<BlockchainMessage>& messageQueue) = 0;
+  //virtual std::vector<Crypto::Hash> getBlockHashesByTimestamps(uint64_t timestampBegin, size_t secondsCount) const = 0;
+  //virtual std::vector<Crypto::Hash> getTransactionHashesByPaymentId(const Crypto::Hash& paymentId) const = 0;
 };
 
 } //namespace CryptoNote

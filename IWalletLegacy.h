@@ -87,6 +87,7 @@ public:
   virtual void synchronizationCompleted(std::error_code result) {}
   virtual void actualBalanceUpdated(uint64_t actualBalance) {}
   virtual void pendingBalanceUpdated(uint64_t pendingBalance) {}
+  virtual void unmixableBalanceUpdated(uint64_t dustBalance) {}
   virtual void actualDepositBalanceUpdated(uint64_t actualDepositBalance) {}
   virtual void pendingDepositBalanceUpdated(uint64_t pendingDepositBalance) {}
   virtual void externalTransactionCreated(TransactionId transactionId) {}
